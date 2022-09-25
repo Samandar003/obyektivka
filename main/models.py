@@ -1,4 +1,10 @@
 from django.db import models
+from django.conf import settings
+from django.core.files.storage import FileSystemStorage
+from os.path import join as join_path
+
+# input_storage = FileSystemStorage(location=settings.INPUT_ROOT)
+output_storage = FileSystemStorage(location=settings.OUTPUT_ROOT)
 
 # Create your models here.
 
@@ -59,6 +65,6 @@ class Intro(models.Model):
         return self.full_name
     
 class OutFile(models.Model):
-    file = models.FileField(upload_to='out_files')
+    file = models.FileField(upload_to='files')
     
     
